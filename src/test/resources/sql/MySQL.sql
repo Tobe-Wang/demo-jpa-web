@@ -1,6 +1,6 @@
-create database test;
+create database demo;
 
-use test;
+use demo;
 
 -- 表
 drop table if exists sys_user;
@@ -12,6 +12,13 @@ create table sys_user(
     primary key (id)
 );
 
+-- truncate table sys_user;
+insert into SYS_USER(id, name, sex, regtime) values(1, '张三', '1', '2020-01-01 01:01:01'), (2, '李四', '2', '2022-02-02 02:02:02');
+/*
+select * from sys_user;
+*/
+
+drop table if exists sys_address;
 create table sys_address(
     id int not null auto_increment,
     address varchar(30),
@@ -19,6 +26,13 @@ create table sys_address(
     userid int,
     primary key (id)
 );
+
+-- truncate table sys_address;
+insert into sys_address(address, zipcode, userid) values('杭州', '310002', 1), ('上海', '200002', 1);
+/*
+select * from sys_address;
+*/
+ */
 
 -- 存储过程
 drop procedure if exists proc_user;
@@ -43,14 +57,3 @@ end;
 /*
 select func_plus(4, 6);
 */
-
--- 数据
--- truncate table sys_user;
-insert into SYS_USER(id, name, sex, regtime) values(1, '张三', '1', '2020-01-01 01:01:01'), (2, '李四', '2', '2022-02-02 02:02:02');
-
-select * from sys_user;
-
--- truncate table sys_address;
-insert into sys_address(address, zipcode, userid) values('杭州', '310002', 1), ('上海', '200002', 1);
-
-select * from sys_address;
