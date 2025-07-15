@@ -1,13 +1,15 @@
-create database demo;
+create database test;
 
-use demo;
+use test;
 
+-- 表
+drop table if exists sys_user;
 create table sys_user(
     id int not null auto_increment,
     name varchar(10),
-    sex int,
+    sex varchar(1),
     regtime datetime,
-    primary key (ID)
+    primary key (id)
 );
 
 create table sys_address(
@@ -15,23 +17,36 @@ create table sys_address(
     address varchar(30),
     zipcode varchar(6),
     userid int,
-    primary key (ID)
+    primary key (id)
 );
 
-create procedure proc_get_sys_user(in p_name varchar(10))
+-- 存储过程
+drop procedure if exists proc_user;
+create procedure proc_user(in p_name varchar(10))
 begin
     select * from sys_user where name = p_name;
 end;
 
+/*
+call pro_user('张三');
+*/
+
+-- 函数
+drop function if exists func_plus;
 create function func_plus(p_a int, p_b int)
-    returns int(11)
+    returns int
     no sql
 begin
     return (p_a + p_b);
 end;
 
+/*
+select func_plus(4, 6);
+*/
+
+-- 数据
 -- truncate table sys_user;
-insert into SYS_USER(name, sex, regtime) values('张三', 1, '2020-01-01 01:01:01'), ('李四', 2, '2022-02-02 02:02:02');
+insert into SYS_USER(id, name, sex, regtime) values(1, '张三', '1', '2020-01-01 01:01:01'), (2, '李四', '2', '2022-02-02 02:02:02');
 
 select * from sys_user;
 
