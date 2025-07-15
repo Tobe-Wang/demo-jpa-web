@@ -1,91 +1,41 @@
-create database TEST;
+create database demo;
 
-use TEST;
+use demo;
 
-create table SYS_ADDRESS(
-                            ID int not null auto_increment,
-                            ADDRESS varchar(30),
-                            ZIPCODE varchar(10),
-                            USERID int,
-                            primary key (ID)
+create table sys_user(
+    id int not null auto_increment,
+    name varchar(10),
+    sex int,
+    regtime datetime,
+    primary key (ID)
 );
 
-create table SYS_USER(
-                         ID int not null auto_increment,
-                         NAME varchar(10),
-                         SEX int,
-                         primary key (ID)
+create table sys_address(
+    id int not null auto_increment,
+    address varchar(30),
+    zipcode varchar(6),
+    userid int,
+    primary key (ID)
 );
 
-create table SYS_INFO(
-                         ID varchar(32),
-                         NAME varchar(32),
-                         RCREATETIME timestamp,
-                         RUPDATETIME timestamp,
-                         RSTATUS varchar(32),
-                         primary key (ID)
-);
-
-create procedure PROC_GET_SYS_USER(in PS_NAME varchar(10))
+create procedure proc_get_sys_user(in p_name varchar(10))
 begin
-select ID, NAME, SEX from SYS_USER where NAME = PS_NAME;
+    select * from sys_user where name = p_name;
 end;
 
-insert into SYS_USER values(100, '张三', 1);
-insert into SYS_ADDRESS values(1, '杭州', '310002', 100);
-insert into SYS_ADDRESS values(2, '北京', '100002', 100);
-
-update SYS_USER set sex = 3 where id = 100;
-update SYS_USER set sex = 3 where id = 102;
-
-select * from SYS_USER;
-select * from SYS_ADDRESS;
-select * from SYS_INFO;
-
-truncate table SYS_USER;
-truncate table SYS_ADDRESS;create database TEST;
-
-use TEST;
-
-create table SYS_ADDRESS(
-                            ID int not null auto_increment,
-                            ADDRESS varchar(30),
-                            ZIPCODE varchar(10),
-                            USERID int,
-                            primary key (ID)
-);
-
-create table SYS_USER(
-                         ID int not null auto_increment,
-                         NAME varchar(10),
-                         SEX int,
-                         primary key (ID)
-);
-
-create table SYS_INFO(
-                         ID varchar(32),
-                         NAME varchar(32),
-                         RCREATETIME timestamp,
-                         RUPDATETIME timestamp,
-                         RSTATUS varchar(32),
-                         primary key (ID)
-);
-
-create procedure PROC_GET_SYS_USER(in PS_NAME varchar(10))
+create function func_plus(p_a int, p_b int)
+    returns int(11)
+    no sql
 begin
-select ID, NAME, SEX from SYS_USER where NAME = PS_NAME;
+    return (p_a + p_b);
 end;
 
-insert into SYS_USER values(100, '张三', 1);
-insert into SYS_ADDRESS values(1, '杭州', '310002', 100);
-insert into SYS_ADDRESS values(2, '北京', '100002', 100);
+-- truncate table sys_user;
+insert into SYS_USER(name, sex, regtime) values('张三', 1, '2020-01-01 01:01:01'), ('李四', 2, '2022-02-02 02:02:02');
 
-update SYS_USER set sex = 3 where id = 100;
-update SYS_USER set sex = 3 where id = 102;
+select * from sys_user;
 
-select * from SYS_USER;
-select * from SYS_ADDRESS;
-select * from SYS_INFO;
+-- truncate table sys_address;
+insert into sys_address(address, zipcode, userid) values('杭州', '310002', 1), ('上海', '200002', 1);
 
-truncate table SYS_USER;
-truncate table SYS_ADDRESS;
+select * from sys_address;
