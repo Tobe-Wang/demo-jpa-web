@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
@@ -19,8 +18,7 @@ public class SysInfo {
     @Id
     @Size(max = 32)
     @Column(name = "id", nullable = false, length = 32)
-    @GeneratedValue(generator = "uuidGenerator")
-    @GenericGenerator(name = "uuidGenerator", strategy = "uuid")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     @Size(max = 32)
