@@ -3,8 +3,10 @@ package cn.zhaofd.demojpaweb.demo.repository;
 import cn.zhaofd.core.spring.jpa.repository.BaseRepository;
 import cn.zhaofd.demojpaweb.demo.dto.SysInfo;
 import cn.zhaofd.demojpaweb.demo.dto.SysInfoStat;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -70,7 +72,8 @@ public interface SysInfoRepository extends BaseRepository<SysInfo, Integer> {
     @Query(value = """
             SELECT t.name as name, COUNT(1) as count FROM sys_info t
             WHERE t.rcreatetime >= :startdate AND t.rcreatetime <=:enddate
-            GROUP BY t.name""", nativeQuery = true)
+            GROUP BY t.name
+            """, nativeQuery = true)
     List<Map<String, Object>> groupByNameNative(@Param("startdate") Date startdate, @Param("enddate") Date enddate);
 
     // nativeQuery=false，使用jpql查询，表名必须和实体类名一致，字段名必须与属性一致
@@ -86,6 +89,19 @@ public interface SysInfoRepository extends BaseRepository<SysInfo, Integer> {
     @Query(value = """
             SELECT new cn.zhaofd.demojpaweb.demo.dto.SysInfoStat(t.name, count(1)) FROM SysInfo t
             WHERE t.rcreatetime >= :startdate AND t.rcreatetime <=:enddate
-            GROUP BY t.name""")
+            GROUP BY t.name
+            """)
     List<SysInfoStat> groupByName(@Param("startdate") Date startdate, @Param("enddate") Date enddate);
+
+    /**
+     * 修改数据
+     *
+     * @param name 名称
+     * @param id   主键
+     * @return 修改数量
+     */
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE SysInfo SET name = ?1 WHERE id = ?2")
+    int setNameById(String name, String id);
 }
