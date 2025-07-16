@@ -5,9 +5,9 @@ package cn.zhaofd.demojpaweb.demo.dto;
  */
 public class SysInfoStat {
     private String name;
-    private Integer count;
+    private Long count;
 
-    public SysInfoStat(String name, Integer count) {
+    public SysInfoStat(String name, Long count) {
         this.name = name;
         this.count = count;
     }
@@ -20,11 +20,11 @@ public class SysInfoStat {
         this.name = name;
     }
 
-    public Integer getCount() {
+    public Long getCount() {
         return count;
     }
 
-    public void setCount(Integer count) {
+    public void setCount(Long count) {
         this.count = count;
     }
 }
