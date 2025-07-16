@@ -22,8 +22,8 @@ public class SysUser {
     @Column(name = "sex", length = 1)
     private String sex;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @Column(name = "regtime")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Instant regtime;
 
     public Integer getId() {
