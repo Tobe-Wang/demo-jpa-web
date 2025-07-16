@@ -10,6 +10,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
 
+/**
+ * jpa直接应用示例
+ */
 @Entity
 @Table(name = "sys_info")
 public class SysInfo {
