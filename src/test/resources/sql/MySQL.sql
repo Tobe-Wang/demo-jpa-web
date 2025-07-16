@@ -38,6 +38,7 @@ create table sys_info(
     id varchar(32),
     name varchar(32),
     rcreatetime timestamp default current_timestamp,
+    rupdatetime timestamp,
     primary key (id)
 );
 
