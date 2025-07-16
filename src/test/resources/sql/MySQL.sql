@@ -32,7 +32,20 @@ insert into sys_address(address, zipcode, userid) values('杭州', '310002', 1),
 /*
 select * from sys_address;
 */
- */
+
+drop table if exists sys_info;
+create table sys_info(
+    id int not null auto_increment,
+    name varchar(32),
+    rcreatetime timestamp default current_timestamp,
+    primary key (id)
+);
+
+-- truncate table sys_info;
+insert into sys_info(name) values('信息1'), ('信息2');
+/*
+select * from sys_info;
+*/
 
 -- 存储过程
 drop procedure if exists proc_user;
