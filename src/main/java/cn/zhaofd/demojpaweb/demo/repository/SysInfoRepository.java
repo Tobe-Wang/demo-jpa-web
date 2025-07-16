@@ -3,6 +3,9 @@ package cn.zhaofd.demojpaweb.demo.repository;
 import cn.zhaofd.core.spring.jpa.repository.BaseRepository;
 import cn.zhaofd.demojpaweb.demo.dto.SysInfo;
 import cn.zhaofd.demojpaweb.demo.dto.SysInfoStat;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -104,4 +107,22 @@ public interface SysInfoRepository extends BaseRepository<SysInfo, Integer> {
     @Transactional
     @Query(value = "UPDATE SysInfo SET name = ?1 WHERE id = ?2")
     int setNameById(String name, String id);
+
+    /**
+     * 根据名称排序查询
+     *
+     * @param name 名称
+     * @param sort 排序
+     * @return 结果集
+     */
+    List<SysInfo> findByName(String name, Sort sort);
+
+    /**
+     * 分页查询
+     *
+     * @param name     名称
+     * @param pageable 分页参数
+     * @return 结果集
+     */
+    Page<SysInfo> findByName(String name, Pageable pageable);
 }
