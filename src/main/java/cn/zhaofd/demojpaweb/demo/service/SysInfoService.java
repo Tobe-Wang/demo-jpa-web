@@ -14,6 +14,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * jpa直接应用示例
+ */
 @Service
 public class SysInfoService {
     private final SysInfoRepository sysInfoRepository;

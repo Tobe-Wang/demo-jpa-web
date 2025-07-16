@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * jpa直接应用示例
+ */
 @RestController
 @RequestMapping("/sys/info")
 public class SysInfoController {

@@ -15,6 +15,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * jpa直接应用示例
+ */
 public interface SysInfoRepository extends BaseRepository<SysInfo, Integer> {
     /**
      * 根据名称查询
