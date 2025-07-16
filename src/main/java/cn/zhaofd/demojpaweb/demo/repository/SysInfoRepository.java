@@ -45,6 +45,24 @@ public interface SysInfoRepository extends BaseRepository<SysInfo, Integer> {
     List<SysInfo> findByIdAndName(String id, String name);
 
     /**
+     * 根据名称排序查询
+     *
+     * @param name 名称
+     * @param sort 排序
+     * @return 结果集
+     */
+    List<SysInfo> findByName(String name, Sort sort);
+
+    /**
+     * 分页查询
+     *
+     * @param name     名称
+     * @param pageable 分页参数
+     * @return 结果集
+     */
+    Page<SysInfo> findByName(String name, Pageable pageable);
+
+    /**
      * 参数索引方式@Query查询
      *
      * @param name 模糊名称
@@ -107,22 +125,4 @@ public interface SysInfoRepository extends BaseRepository<SysInfo, Integer> {
     @Transactional
     @Query(value = "UPDATE SysInfo SET name = ?1 WHERE id = ?2")
     int setNameById(String name, String id);
-
-    /**
-     * 根据名称排序查询
-     *
-     * @param name 名称
-     * @param sort 排序
-     * @return 结果集
-     */
-    List<SysInfo> findByName(String name, Sort sort);
-
-    /**
-     * 分页查询
-     *
-     * @param name     名称
-     * @param pageable 分页参数
-     * @return 结果集
-     */
-    Page<SysInfo> findByName(String name, Pageable pageable);
 }
