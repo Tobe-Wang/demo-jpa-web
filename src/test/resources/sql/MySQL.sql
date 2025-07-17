@@ -35,7 +35,7 @@ select * from sys_address;
 
 drop table if exists sys_info;
 create table sys_info(
-    id varchar(32),
+    id varchar(36),
     name varchar(32),
     rcreatetime timestamp default current_timestamp,
     rupdatetime timestamp,
