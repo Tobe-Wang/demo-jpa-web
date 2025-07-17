@@ -11,6 +11,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -48,22 +49,22 @@ public interface SysInfoRepository extends BaseRepository<SysInfo, Integer> {
     List<SysInfo> findByIdAndName(String id, String name);
 
     /**
-     * 根据名称排序查询
+     * 根据名称排序模糊查询
      *
      * @param name 名称
      * @param sort 排序
      * @return 结果集
      */
-    List<SysInfo> findByName(String name, Sort sort);
+    List<SysInfo> findByNameLike(String name, Sort sort);
 
     /**
-     * 分页查询
+     * 分页模糊查询
      *
      * @param name     名称
      * @param pageable 分页参数
      * @return 结果集
      */
-    Page<SysInfo> findByName(String name, Pageable pageable);
+    Page<SysInfo> findByNameLike(String name, Pageable pageable);
 
     /**
      * 参数索引方式@Query查询
@@ -95,7 +96,7 @@ public interface SysInfoRepository extends BaseRepository<SysInfo, Integer> {
      */
     @Query(value = """
             SELECT t.name as name, COUNT(1) as count FROM sys_info t
-            WHERE t.rcreatetime >= :startdate AND t.rcreatetime <=:enddate
+            WHERE t.rcreatetime >= :startdate AND t.rcreatetime <= :enddate
             GROUP BY t.name
             """, nativeQuery = true)
     List<Map<String, Object>> groupByNameNative(@Param("startdate") Date startdate, @Param("enddate") Date enddate);
@@ -112,10 +113,10 @@ public interface SysInfoRepository extends BaseRepository<SysInfo, Integer> {
      */
     @Query(value = """
             SELECT new cn.zhaofd.demojpaweb.demo.dto.SysInfoStat(t.name, count(1)) FROM SysInfo t
-            WHERE t.rcreatetime >= :startdate AND t.rcreatetime <=:enddate
+            WHERE t.rcreatetime >= :startdate AND t.rcreatetime <= :enddate
             GROUP BY t.name
             """)
-    List<SysInfoStat> groupByName(@Param("startdate") Date startdate, @Param("enddate") Date enddate);
+    List<SysInfoStat> groupByName(@Param("startdate") Instant startdate, @Param("enddate") Instant enddate);
 
     /**
      * 修改数据

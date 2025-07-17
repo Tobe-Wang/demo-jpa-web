@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -38,19 +38,19 @@ public class SysInfoService {
         return sysInfoRepository.findByIdAndName(id, name);
     }
 
-    public List<SysInfo> findByName(String name, Sort sort) {
-        return sysInfoRepository.findByName(name, sort);
+    public List<SysInfo> findByNameLike(String name, Sort sort) {
+        return sysInfoRepository.findByNameLike(name, sort);
     }
 
-    public Page<SysInfo> findByName(String name, Pageable pageable) {
-        return sysInfoRepository.findByName(name, pageable);
+    public Page<SysInfo> findByNameLike(String name, Pageable pageable) {
+        return sysInfoRepository.findByNameLike(name, pageable);
     }
 
     public List<SysInfo> findLike(String name) {
         return sysInfoRepository.findLike(name);
     }
 
-    public SysInfo getId(@Param("id") String uuid) {
+    public SysInfo getId(String uuid) {
         return sysInfoRepository.getId(uuid);
     }
 
@@ -58,7 +58,7 @@ public class SysInfoService {
         return sysInfoRepository.groupByNameNative(startdate, enddate);
     }
 
-    public List<SysInfoStat> groupByName(Date startdate, Date enddate) {
+    public List<SysInfoStat> groupByName(Instant startdate, Instant enddate) {
         return sysInfoRepository.groupByName(startdate, enddate);
     }
 
