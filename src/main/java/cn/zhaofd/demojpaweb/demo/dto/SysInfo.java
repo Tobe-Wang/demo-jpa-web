@@ -16,8 +16,7 @@ import java.time.Instant;
 @Table(name = "sys_info")
 public class SysInfo {
     @Id
-    @Size(max = 32)
-    @Column(name = "id", nullable = false, length = 32)
+    @Column(name = "id", nullable = false, length = 36)
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
@@ -25,17 +24,15 @@ public class SysInfo {
     @Column(name = "name", length = 32)
     private String name;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
     @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "rcreatetime")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Instant rcreatetime;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @UpdateTimestamp
     @Column(name = "rupdatetime")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Instant rupdatetime;
 
     public String getId() {

@@ -26,6 +26,14 @@ public class SysInfoService {
         this.sysInfoRepository = sysInfoRepository;
     }
 
+    public SysInfo save(SysInfo sysInfo) {
+        return sysInfoRepository.save(sysInfo);
+    }
+
+    public SysInfo getById(String id) {
+        return sysInfoRepository.getId(id);
+    }
+
     public List<SysInfo> findByName(String name) {
         return sysInfoRepository.findByName(name);
     }

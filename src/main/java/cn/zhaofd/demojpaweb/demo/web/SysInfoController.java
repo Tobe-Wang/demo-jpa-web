@@ -10,10 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -29,6 +26,18 @@ public class SysInfoController {
     @Autowired
     public SysInfoController(SysInfoService sysInfoService) {
         this.sysInfoService = sysInfoService;
+    }
+
+    @RequestMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    public SysInfo save(SysInfo sysInfo) {
+        return sysInfoService.save(sysInfo);
+    }
+
+    @RequestMapping(value = "/update", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    public SysInfo update(String id, String name) {
+        SysInfo sysInfo = sysInfoService.getId(id);
+        sysInfo.setName(name);
+        return sysInfoService.save(sysInfo);
     }
 
     @GetMapping(value = "/findByName", produces = MediaType.APPLICATION_JSON_VALUE)
