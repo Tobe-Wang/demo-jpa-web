@@ -43,7 +43,7 @@ create table sys_info(
 );
 
 -- truncate table sys_info;
-insert into sys_info(id, name) values('a1', '信息1'), ('a2', '信息2');
+insert into sys_info(id, name) values('a1', '信息1'), ('a2', '信息2'), ('a3', '信息3');
 /*
 select * from sys_info;
 */
