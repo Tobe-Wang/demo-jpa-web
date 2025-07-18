@@ -4,12 +4,12 @@
 
 package cn.zhaofd.demojpaweb.config.formatter;
 
-import cn.zhaofd.core.spring.web.formatter.DateFormatter;
+import cn.zhaofd.core.spring.web.formatter.BaseDateFormatter;
 import org.springframework.stereotype.Component;
 
 /**
  * Spring MVC日期格式化
  */
 @Component
-public class DateFormatterComponent extends DateFormatter {
+public class DateFormatter extends BaseDateFormatter {
 }
