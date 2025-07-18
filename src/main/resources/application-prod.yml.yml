@@ -7,5 +7,15 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/demo?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false
     username: root
     password: tobe2020FT
+    hikari:
+      connection-timeout: 30000 # 连接超时时间 (毫秒)，默认 30000 (30秒)
+      idle-timeout: 600000 # 空闲连接超时时间 (毫秒)，默认 600000 (10分钟)
+      max-lifetime: 1800000 # 连接最大存活时间 (毫秒)，默认 1800000 (30分钟)。注意：MySQL 通常建议小于 wait_timeout
+      minimum-idle: 5 # 最小空闲连接数，默认 10
+      maximum-pool-size: 10 # 最大连接数 (包括空闲和使用中的)，默认 10。根据应用负载调整
+      pool-name: Hikari # 连接池名称，方便监控
+      auto-commit: true # 是否自动提交事务，默认 true
+      connection-test-query: SELECT 1 # 简单的测试 SQL (MySQL, PostgreSQL, H2等适用)
+      validation-timeout: 5000 # 验证查询超时时间 (毫秒)，默认 5000
   jpa:
     show-sql: false # 是否开启sql的log，默认为:false
