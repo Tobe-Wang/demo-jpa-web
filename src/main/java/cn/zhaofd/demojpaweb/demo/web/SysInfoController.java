@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +27,11 @@ public class SysInfoController {
     @Autowired
     public SysInfoController(SysInfoService sysInfoService) {
         this.sysInfoService = sysInfoService;
+    }
+
+    @GetMapping(value = "/testFormatter")
+    public Date testFormatter(Date date) {
+        return date;
     }
 
     @RequestMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
