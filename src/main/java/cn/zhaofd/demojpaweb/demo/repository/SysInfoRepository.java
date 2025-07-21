@@ -1,6 +1,6 @@
 package cn.zhaofd.demojpaweb.demo.repository;
 
-import cn.zhaofd.core.spring.jpa.repository.BaseRepository;
+import cn.zhaofd.core.spring.jpa.core.repository.BaseRepository;
 import cn.zhaofd.demojpaweb.demo.dto.SysInfo;
 import cn.zhaofd.demojpaweb.demo.dto.SysInfoStat;
 import org.springframework.data.domain.Page;
