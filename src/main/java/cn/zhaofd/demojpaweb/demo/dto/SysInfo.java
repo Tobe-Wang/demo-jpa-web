@@ -7,6 +7,8 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.time.Instant;
 
 /**
@@ -14,7 +16,10 @@ import java.time.Instant;
  */
 @Entity
 @Table(name = "sys_info")
-public class SysInfo {
+public class SysInfo implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     @Id
     @Column(name = "id", nullable = false, length = 36)
     @GeneratedValue(strategy = GenerationType.UUID)

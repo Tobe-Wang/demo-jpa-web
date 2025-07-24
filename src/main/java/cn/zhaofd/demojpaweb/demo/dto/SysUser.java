@@ -4,11 +4,16 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 
-import java.time.Instant;
+import java.io.Serial;
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "sys_user")
-public class SysUser {
+public class SysUser implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -24,7 +29,7 @@ public class SysUser {
 
     @Column(name = "regtime")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Instant regtime;
+    private LocalDateTime regtime;
 
     public Integer getId() {
         return id;
@@ -50,11 +55,11 @@ public class SysUser {
         this.sex = sex;
     }
 
-    public Instant getRegtime() {
+    public LocalDateTime getRegtime() {
         return regtime;
     }
 
-    public void setRegtime(Instant regtime) {
+    public void setRegtime(LocalDateTime regtime) {
         this.regtime = regtime;
     }
 
