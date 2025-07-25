@@ -4,6 +4,7 @@
 
 package cn.zhaofd.demojpaweb.demo.web;
 
+import cn.zhaofd.core.base.DateUtil;
 import cn.zhaofd.core.json.JacksonUtil;
 import cn.zhaofd.demojpaweb.demo.dto.SysUser;
 import org.junit.jupiter.api.Test;
@@ -16,6 +17,8 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
 import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.Map;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -109,6 +112,43 @@ class SysUserControllerTest {
     }
 
     @Test
-    void updateFormData() {
+    void updateFormData() throws Exception {
+        SysUser sysUser = new SysUser();
+        sysUser.setId(2);
+        sysUser.setName("李四");
+        sysUser.setSex("2");
+        sysUser.setRegtime(LocalDateTime.now());
+
+        // 封装请求参数
+        MultiValueMap<String, String> reqParams = new LinkedMultiValueMap<>();
+        reqParams.setAll(JacksonUtil.toMapWithString(sysUser));
+
+        // @formatter:off
+        mockMvc.perform(put("/sys/user").contentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE).formFields(reqParams))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json;charset=UTF-8"));
+        // @formatter:on
+    }
+
+    @Test
+    void updatePart() throws Exception {
+        Map<String, Object> params = Map.of("name", "钱七part", "regtime", DateUtil.format(new Date(), DateUtil.DATE_TIME));
+
+        // @formatter:off
+        mockMvc.perform(patch("/sys/user/3").contentType(MediaType.APPLICATION_JSON_VALUE).content(JacksonUtil.writeValueAsString(params)))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json;charset=UTF-8"));
+        // @formatter:on
+    }
+
+    @Test
+    void deleteById() throws Exception {
+        // @formatter:off
+        mockMvc.perform(delete("/sys/user/20"))
+                .andDo(print())
+                .andExpect(status().isOk());
+        // @formatter:on
     }
 }
