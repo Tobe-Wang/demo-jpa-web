@@ -19,6 +19,7 @@ spring:
       validation-timeout: 5000 # 验证查询超时时间 (毫秒)，默认 5000
   jpa:
     show-sql: true # 是否开启sql的log，默认为:false
+    open-in-view: false # 视图需要的数据（尤其是懒加载关联）在整个HTTP请求处理周期中是否保持打开状态，在视图层访问懒加载对象会触发额外的数据库查询
   cache:
     type: redis # 缓存类型
     redis:
