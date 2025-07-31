@@ -2,11 +2,11 @@
  * Copyright (c) 2025. Tobe Wang
  */
 
-package cn.zhaofd.demojpaweb.demo.web;
+package cn.zhaofd.demojpaweb.demojpa.web;
 
 import cn.zhaofd.core.spring.jpa.core.web.BaseController;
-import cn.zhaofd.demojpaweb.demo.dto.SysAddress;
-import cn.zhaofd.demojpaweb.demo.service.SysAddressService;
+import cn.zhaofd.demojpaweb.demojpa.dto.SysAddress;
+import cn.zhaofd.demojpaweb.demojpa.service.SysAddressService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

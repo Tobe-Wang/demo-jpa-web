@@ -2,11 +2,11 @@
  * Copyright (c) 2025. Tobe Wang
  */
 
-package cn.zhaofd.demojpaweb.demo.service;
+package cn.zhaofd.demojpaweb.demojpa.service;
 
 import cn.zhaofd.core.spring.jpa.core.service.BaseService;
-import cn.zhaofd.demojpaweb.demo.dto.SysUser;
-import cn.zhaofd.demojpaweb.demo.repository.SysUserRepository;
+import cn.zhaofd.demojpaweb.demojpa.dto.SysUser;
+import cn.zhaofd.demojpaweb.demojpa.repository.SysUserRepository;
 import org.springframework.stereotype.Service;
 
 /**

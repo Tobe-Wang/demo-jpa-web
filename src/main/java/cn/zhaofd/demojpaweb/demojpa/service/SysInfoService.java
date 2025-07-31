@@ -1,8 +1,8 @@
-package cn.zhaofd.demojpaweb.demo.service;
+package cn.zhaofd.demojpaweb.demojpa.service;
 
-import cn.zhaofd.demojpaweb.demo.dto.SysInfo;
-import cn.zhaofd.demojpaweb.demo.dto.SysInfoStat;
-import cn.zhaofd.demojpaweb.demo.repository.SysInfoRepository;
+import cn.zhaofd.demojpaweb.demojpa.dto.SysInfo;
+import cn.zhaofd.demojpaweb.demojpa.dto.SysInfoStat;
+import cn.zhaofd.demojpaweb.demojpa.repository.SysInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

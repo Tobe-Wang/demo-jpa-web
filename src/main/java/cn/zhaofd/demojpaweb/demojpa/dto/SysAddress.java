@@ -1,4 +1,4 @@
-package cn.zhaofd.demojpaweb.demo.dto;
+package cn.zhaofd.demojpaweb.demojpa.dto;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;

@@ -1,8 +1,8 @@
-package cn.zhaofd.demojpaweb.demo.repository;
+package cn.zhaofd.demojpaweb.demojpa.repository;
 
 import cn.zhaofd.core.spring.jpa.core.repository.BaseRepository;
-import cn.zhaofd.demojpaweb.demo.dto.SysInfo;
-import cn.zhaofd.demojpaweb.demo.dto.SysInfoStat;
+import cn.zhaofd.demojpaweb.demojpa.dto.SysInfo;
+import cn.zhaofd.demojpaweb.demojpa.dto.SysInfoStat;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -112,7 +112,7 @@ public interface SysInfoRepository extends BaseRepository<SysInfo, Integer> {
      * @return 结果集
      */
     @Query(value = """
-            SELECT new cn.zhaofd.demojpaweb.demo.dto.SysInfoStat(t.name, count(1)) FROM SysInfo t
+            SELECT new cn.zhaofd.demojpaweb.demojpa.dto.SysInfoStat(t.name, count(1)) FROM SysInfo t
             WHERE t.rcreatetime >= :startdate AND t.rcreatetime <= :enddate
             GROUP BY t.name
             """)
