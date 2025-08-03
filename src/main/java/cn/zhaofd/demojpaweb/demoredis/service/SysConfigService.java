@@ -10,6 +10,9 @@ import cn.zhaofd.demojpaweb.demoredis.repository.StringRedisRepository;
 import cn.zhaofd.demojpaweb.demoredis.repository.SysConfigRepository;
 import org.springframework.stereotype.Service;
 
+/**
+ * 继承core-spring-redis的应用示例
+ */
 @Service
 public class SysConfigService extends BaseHashRedisService<SysConfig, SysConfigRepository, StringRedisRepository> {
 }

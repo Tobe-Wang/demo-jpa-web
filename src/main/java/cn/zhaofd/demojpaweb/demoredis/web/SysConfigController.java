@@ -10,6 +10,9 @@ import cn.zhaofd.demojpaweb.demoredis.service.SysConfigService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 继承core-spring-redis的应用示例
+ */
 @RestController
 @RequestMapping("/sys/config")
 public class SysConfigController extends BaseHashRedisController<SysConfig, SysConfigService> {
