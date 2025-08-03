@@ -9,7 +9,7 @@ import cn.zhaofd.demojpaweb.demoredis.repository.StringRedisRepository;
 import org.springframework.stereotype.Service;
 
 /**
- * String键值对的redis缓存
+ * 继承core-spring-redis的应用示例
  */
 @Service
 public class StringRedisService extends BaseStringRedisService<StringRedisRepository> {

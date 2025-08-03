@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * String键值对的redis缓存
+ * 继承core-spring-redis的应用示例
  */
 @RestController
 @RequestMapping("/cache/string")

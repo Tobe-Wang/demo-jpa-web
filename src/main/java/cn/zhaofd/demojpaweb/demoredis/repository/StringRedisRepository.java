@@ -8,7 +8,7 @@ import cn.zhaofd.core.spring.redis.core.repository.BaseStringRedisRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * String键值对的redis缓存
+ * 继承core-spring-redis的应用示例
  */
 @Repository
 public class StringRedisRepository extends BaseStringRedisRepository {
