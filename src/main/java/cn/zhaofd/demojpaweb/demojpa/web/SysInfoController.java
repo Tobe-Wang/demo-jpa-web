@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2025. Tobe Wang
+ */
+
 package cn.zhaofd.demojpaweb.demojpa.web;
 
 import cn.zhaofd.core.base.DateUtil;
@@ -24,8 +28,7 @@ import java.util.Map;
 public class SysInfoController {
     private final SysInfoService sysInfoService;
 
-    @Autowired
-    public SysInfoController(SysInfoService sysInfoService) {
+    public SysInfoController(@Autowired SysInfoService sysInfoService) {
         this.sysInfoService = sysInfoService;
     }
 

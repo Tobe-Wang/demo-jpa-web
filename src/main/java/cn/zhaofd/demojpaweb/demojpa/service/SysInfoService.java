@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2025. Tobe Wang
+ */
+
 package cn.zhaofd.demojpaweb.demojpa.service;
 
 import cn.zhaofd.demojpaweb.demojpa.dto.SysInfo;
@@ -21,8 +25,7 @@ import java.util.Map;
 public class SysInfoService {
     private final SysInfoRepository sysInfoRepository;
 
-    @Autowired
-    public SysInfoService(SysInfoRepository sysInfoRepository) {
+    public SysInfoService(@Autowired SysInfoRepository sysInfoRepository) {
         this.sysInfoRepository = sysInfoRepository;
     }
 
