@@ -4,6 +4,7 @@
 
 package cn.zhaofd.demojpaweb.config;
 
+import cn.zhaofd.core.spring.jpa.config.cache.DynamicCacheResolver;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +14,6 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @EnableCaching
-@ComponentScan("cn.zhaofd.core.spring.jpa.config.cache")
+@ComponentScan(basePackageClasses = DynamicCacheResolver.class)
 public class CacheConfig {
 }
