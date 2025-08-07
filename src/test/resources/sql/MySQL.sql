@@ -13,7 +13,7 @@ create table sys_user(
 );
 
 -- truncate table sys_user;
-insert into SYS_USER(id, name, sex, regtime) values(1, '张三', '1', '2020-01-01 01:01:01'), (2, '李四', '2', '2022-02-02 02:02:02');
+insert into sys_user(id, name, sex, regtime) values(1, '张三', '1', '2020-01-01 01:01:01'), (2, '李四', '2', '2022-02-02 02:02:02');
 /*
 select * from sys_user;
 */
@@ -46,6 +46,21 @@ create table sys_info(
 insert into sys_info(id, name) values('a1', '信息1'), ('a2', '信息2'), ('a3', '信息3');
 /*
 select * from sys_info;
+*/
+
+drop table if exists sys_param;
+create table sys_param(
+    id int not null auto_increment,
+    code varchar(10),
+    value varchar(10),
+    regtime datetime,
+    primary key (id)
+);
+
+-- truncate table sys_param;
+insert into sys_param(id, code, value, regtime) values(1, 'code1', '1', '2020-01-01 01:01:01'), (2, 'code2', '2', '2022-02-02 02:02:02');
+/*
+select * from sys_param;
 */
 
 -- 存储过程
