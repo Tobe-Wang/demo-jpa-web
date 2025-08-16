@@ -7,7 +7,7 @@ package cn.zhaofd.demojpaweb.demojpa.web;
 import cn.zhaofd.core.base.DateUtil;
 import cn.zhaofd.core.json.JacksonUtil;
 import cn.zhaofd.core.spring.jpa.core.dto.DataSet;
-import cn.zhaofd.demojpaweb.demojpa.dto.SysUser;
+import cn.zhaofd.demojpaweb.modules.demojpa.dto.SysUser;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
